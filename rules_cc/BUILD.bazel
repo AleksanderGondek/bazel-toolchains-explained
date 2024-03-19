@@ -1,7 +1,9 @@
-"""Simple, vanilla rules_cc target example.
+"""Simple example of binary application compiled using rules_cc [1].
 
-Its goal is to help illustrating the toolchain resolution mechanism for
-single (CC) type of toolchain.
+It's goal is to help illustrate the toolchain resolution mechanism for
+single type of toolchain (CC).
+
+[1] https://github.com/bazelbuild/rules_cc
 """
 
 load("@rules_cc//cc:defs.bzl", "cc_library")

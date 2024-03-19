@@ -1,0 +1,14 @@
+"""Declaration of iron language 'compiler'.
+
+The purpose of this package is to create and expose the iron language compiler.
+
+Said tool accepts singular '*.fe' file as a input and transforms it into a
+binary application that displays the contents of said file. It is a 'mock'
+compiler as it does not really do much, except for using gcc underneath.
+
+It is imperative for the compiler to have a dependency on GCC during its own
+execution (iron language 'compilation'), as it will serve as a vehicle for
+explanation of dependencies of Bazel toolchain on other toolchain, during
+singular Bazel action. Making the compiler stand-alone binary would break
+that assumption and break the point of the example.
+"""
