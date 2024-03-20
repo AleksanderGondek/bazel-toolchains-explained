@@ -28,7 +28,7 @@ FE_FILE_CONTENTS=$(cat "${FE_FILE_PATH}")
 
 # Create source cpp file for the application
 ## Copy over the template .cpp
-SOURCE_FILE_NAME=$(basename ${FE_FILE_PATH})
+SOURCE_FILE_NAME=$(basename "${FE_FILE_PATH}")
 cp -f "${SOURCE_TEMPLATE_PATH}" ./"${SOURCE_FILE_NAME}"
 ## Replace variables in template with actual values
 sed -i "s#{{EXEC_ARCH}}#${EXEC_ARCH}#" ./"${SOURCE_FILE_NAME}"
