@@ -46,8 +46,8 @@ build --incompatible_auto_configure_host_platform=true
 ## Do not attempt to register local host as a platform
 ## (Bazel <7 compatibility)
 ## Docs: https://github.com/bazelbuild/bazel/blob/7f749e927f61a84ef3a8f361ce601db9d2b81fc4/src/main/java/com/google/devtools/build/lib/bazel/rules/BazelRulesModule.java#L151
-build --target_platform_fallback=@bazel-toolchains-explained//:DEV_NULL_PLATFORM
+build --target_platform_fallback=@bazel_toolchains_explained//:DEV_NULL_PLATFORM
 
 ## Force local host to be not usable
 ## Docs: https://github.com/bazelbuild/bazel/blob/7f749e927f61a84ef3a8f361ce601db9d2b81fc4/site/en/extending/platforms.md?plain=1#L112
-build --host_platform=@bazel-toolchains-explained//:DEV_NULL_PLATFORM
+build --host_platform=@bazel_toolchains_explained//:DEV_NULL_PLATFORM

@@ -1,7 +1,7 @@
 """Rules to build and run code written in 'iron' language."""
 
 load(
-    "@bazel-toolchains-explained//rules-iron/private:iron_binary_v0.bzl",
+    "@bazel_toolchains_explained//rules-iron/private:iron_binary_v0.bzl",
     iron_binary_v0 = "iron_binary",
 )
 

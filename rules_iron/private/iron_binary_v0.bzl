@@ -2,8 +2,15 @@
 
 def iron_binary_impl(ctx):
     """To be described."""
-    quasi_binary_name = ctx.file.src.basename.rsplit(".", 1)[0]
-    quasi_binary_output = actions.declare_file(quasi_binary_name)
+    created_binary = ctx.actions.declate_file(ctx.label)
+
+    ctx.actions.run(
+        inputs = ctx.files.chunks,
+        outputs = [created_binary],
+        arguments = args,
+        progress_message = "Merging into %s" % ctx.outputs.out.short_path,
+        executable = ctx.executable.merge_tool,
+    )
 
     return [DefaultInfo(files = depset([quasi_binary_output]))]
 

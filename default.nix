@@ -8,7 +8,7 @@
   nixpkgs = import external_sources.nixpkgs nixpkgs_import_args;
 
   devShell = nixpkgs.mkShell {
-    name = "bazel-toolchains-explained-shell";
+    name = "bazel_toolchains_explained-shell";
 
     packages = with nixpkgs; [
       alejandra

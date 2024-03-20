@@ -1,4 +1,4 @@
-workspace(name = "bazel-toolchains-explained")
+workspace(name = "bazel_toolchains_explained")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 

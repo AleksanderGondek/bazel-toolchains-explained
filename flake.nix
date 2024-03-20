@@ -1,5 +1,5 @@
 {
-  description = "bazel-toolchains-explained developer environment.";
+  description = "bazel_toolchains_explained developer environment.";
 
   # As personally, I am not too keen on the flake mechanism
   # this files is a simple shim, created for compatiblity.
