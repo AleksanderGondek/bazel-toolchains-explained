@@ -51,3 +51,16 @@ build --target_platform_fallback=@bazel_toolchains_explained//:DEV_NULL_PLATFORM
 ## Force local host to be not usable
 ## Docs: https://github.com/bazelbuild/bazel/blob/7f749e927f61a84ef3a8f361ce601db9d2b81fc4/site/en/extending/platforms.md?plain=1#L112
 build --host_platform=@bazel_toolchains_explained//:DEV_NULL_PLATFORM
+
+## Specific local RBE
+## TODO: Why without this flag, the execution will attempt to run locally?
+build --strategy=remote
+build --genrule_strategy=remote
+build --spawn_strategy=remote
+
+build --jobs=32
+
+build --platforms=@bazel_toolchains_explained//:x86_64_linux_remote
+build --extra_execution_platforms=@bazel_toolchains_explained//:x86_64_linux_remote
+
+build --remote_executor=grpc://127.0.0.1:8980

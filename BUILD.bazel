@@ -1,2 +1,15 @@
 # This is /dev/null platform that is purposefully unusable
 platform(name = "DEV_NULL_PLATFORM")
+
+platform(
+    name = "x86_64_linux_remote",
+    constraint_values = [
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_64",
+    ],
+    exec_properties = {
+        "OSFamily": "Linux",
+        "container-image": "docker://harbor.apps.morrigna.rules-nix.build/explore-bzl/ash-i686-cc-x86_64-cc:7w7l0f6r2g7q3qki993dvddddjg9prc7",
+    },
+    visibility = ["//visibility:public"],
+)
