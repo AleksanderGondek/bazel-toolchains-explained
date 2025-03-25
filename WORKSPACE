@@ -4,9 +4,18 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "rules_cc",
-    sha256 = "2037875b9a4456dce4a79d112a8ae885bbc4aad968e6587dca6e64f3a0900cdf",
-    strip_prefix = "rules_cc-0.0.9",
-    urls = ["https://github.com/bazelbuild/rules_cc/releases/download/0.0.9/rules_cc-0.0.9.tar.gz"],
+    sha256 = "712d77868b3152dd618c4d64faaddefcc5965f90f5de6e6dd1d5ddcd0be82d42",
+    strip_prefix = "rules_cc-0.1.1",
+    urls = ["https://github.com/bazelbuild/rules_cc/releases/download/0.1.1/rules_cc-0.1.1.tar.gz"],
+)
+
+# rules_cc depend on com_google_protobuf,
+# yet the `rules_cc_dependencies` is empty
+http_archive(
+    name = "com_google_protobuf",
+    integrity = "sha256-2iiL8dqmwE0DqQUXgcqlKs65FjWGv/mqbPsS9puTlao=",
+    strip_prefix = "protobuf-27.0",
+    urls = ["https://github.com/protocolbuffers/protobuf/releases/download/v27.0/protobuf-27.0.tar.gz"],
 )
 
 # TODO: Comment
@@ -30,7 +39,7 @@ load("@aspect_bazel_lib//lib:repositories.bzl", "aspect_bazel_lib_dependencies")
 
 aspect_bazel_lib_dependencies()
 
-load("@gcc_toolchain//toolchain:defs.bzl", "gcc_register_toolchain", "ARCHS")
+load("@gcc_toolchain//toolchain:defs.bzl", "ARCHS", "gcc_register_toolchain")
 
 gcc_register_toolchain(
     name = "gcc_toolchain_x86_64",
@@ -42,9 +51,9 @@ gcc_register_toolchain(
 # (in other words: to boostrap a hermetic way of executing shell).
 http_archive(
     name = "rules_sh",
-    sha256 = "3243af3fcb3768633fd39f3654de773e5fb61471a2fae5762a1653c22c412d2c",
-    strip_prefix = "rules_sh-0.4.0",
-    urls = ["https://github.com/tweag/rules_sh/releases/download/v0.4.0/rules_sh-0.4.0.tar.gz"],
+    sha256 = "48b12cb1b2536ef6d8aa6111549098794aa05d21c8cf400493b842943636c709",
+    strip_prefix = "rules_sh-0.5.0",
+    urls = ["https://github.com/tweag/rules_sh/releases/download/v0.5.0/rules_sh-0.5.0.tar.gz"],
 )
 
 load("@rules_sh//sh:repositories.bzl", "rules_sh_dependencies")
