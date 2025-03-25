@@ -20,6 +20,16 @@
       niv
       statix
     ];
+
+    shellHook = ''
+      cat <<EOF > user.bazelrc
+      # Bazel from nix fails processing of repo-rules
+      # without this being set (sic!)
+      # TODO: Investigate further.
+      # (/bin:/usr/bin are for the benefit of the 'hermetic' gcc toolchain...)
+      common --action_env='PATH=/bin:/usr/bin:$PATH'
+      EOF
+    '';
   };
 in {
   inherit devShell nixpkgs;

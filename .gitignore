@@ -1,3 +1,4 @@
 .idea
 bazel-*
 result
+user.bazelrc

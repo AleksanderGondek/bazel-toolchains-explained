@@ -63,4 +63,7 @@ build --jobs=32
 build --platforms=@bazel_toolchains_explained//:x86_64_linux_remote
 build --extra_execution_platforms=@bazel_toolchains_explained//:x86_64_linux_remote
 
-build --remote_executor=grpc://127.0.0.1:8980
+# TODO: Make it nicer
+build --remote_executor=grpc://192.168.66.1:30430
+
+try-import user.bazelrc

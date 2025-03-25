@@ -9,7 +9,7 @@ platform(
     ],
     exec_properties = {
         "OSFamily": "Linux",
-        "container-image": "docker://harbor.apps.morrigna.rules-nix.build/explore-bzl/ash-i686-cc-x86_64-cc:7w7l0f6r2g7q3qki993dvddddjg9prc7",
+        "container-image": "docker://harbor.apps.morrigna.rules-nix.build/explore-bzl/ash-bash-coreutils-i686-cc-x86_64-cc:myl0xwv1z442sc5ci982qny9lb0c0giv",
     },
     visibility = ["//visibility:public"],
 )

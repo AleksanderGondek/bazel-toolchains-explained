@@ -1,3 +1,0 @@
-"""To be described."""
-
-load("@bazel_toolchains_explained//rules_iron:defs.bzl", "iron_binary")
