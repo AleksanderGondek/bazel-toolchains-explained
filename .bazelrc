@@ -8,6 +8,7 @@ common --color=no
 ## Therefore it needs to take a nap
 ## Docs: https://bazel.build/reference/command-line-reference#flag--enable_bzlmod
 common --noenable_bzlmod
+common --enable_workspace=true
 
 ## Do not allow any network actions in the sandbox
 ## Docs: https://bazel.build/reference/command-line-reference#flag--sandbox_default_allow_network
@@ -67,3 +68,10 @@ build --extra_execution_platforms=@bazel_toolchains_explained//:x86_64_linux_rem
 build --remote_executor=grpc://192.168.66.1:30430
 
 try-import user.bazelrc
+
+# Issue with used gcc toolchain:
+# ERROR: Traceback (most recent call last):
+#   File "/home/agondek/.cache/bazel/_bazel_agondek/57c9a780c5dd9bf861c4eb469325bae1/external/gcc_toolchain_x86_64_files/BUILD.bazel", line 36, column 16, in <toplevel>
+#     srcs = glob([
+#   Error in glob: glob pattern '*-buildroot-linux-gnu*/sysroot/usr/include/**' didn't match anything, but allow_empty is set to False (the default value of allow_empty can be set with --incompatible_disallow_empty_glob).
+common --incompatible_disallow_empty_glob=false

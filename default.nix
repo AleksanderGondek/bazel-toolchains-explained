@@ -7,21 +7,25 @@
   };
   nixpkgs = import external_sources.nixpkgs nixpkgs_import_args;
 
-  devShell = nixpkgs.mkShell {
+  # To use bazelisk, not Bazel
+  devShell = (nixpkgs.buildFHSEnv {
     name = "bazel_toolchains_explained-shell";
 
-    packages = with nixpkgs; [
+    targetPkgs = pkgs: (with pkgs; [
       alejandra
-      bazel_7
+      bashInteractive
+      bazelisk
       bazel-buildtools
       cocogitto
       git
       helix
       niv
       statix
-    ];
+      # Required by downloaded bazel
+      zlib
+    ]);
 
-    shellHook = ''
+    runScript = nixpkgs.writeScript "bazel_toolchains_explained-shell-init.sh" ''
       cat <<EOF > user.bazelrc
       # Bazel from nix fails processing of repo-rules
       # without this being set (sic!)
@@ -29,8 +33,9 @@
       # (/bin:/usr/bin are for the benefit of the 'hermetic' gcc toolchain...)
       common --action_env='PATH=/bin:/usr/bin:$PATH'
       EOF
+      exec bash
     '';
-  };
+  }).env;
 in {
   inherit devShell nixpkgs;
 }
